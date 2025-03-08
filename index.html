@@ -22,17 +22,19 @@
             line-height: 1.8;
             overflow-x: hidden;
             perspective: 1000px;
+            margin: 0; /* Remove default body margin */
         }
 
-        /* $75K Quantum Grid System */
+        /* $75K Quantum Grid System - Mobile First */
         .quantum-grid {
             display: grid;
-            grid-template-columns: 
-                [full-start] minmax(4rem, 1fr) 
-                [main-start] repeat(12, [col-start] 1fr [col-end]) 
-                [main-end] minmax(4rem, 1fr) [full-end];
-            gap: 4rem;
-            padding: 8rem 0;
+            grid-template-columns:
+                [full-start] minmax(1rem, 1fr) /* Reduced side padding for mobile */
+                [main-start] repeat(12, [col-start] 1fr [col-end])
+                [main-end] minmax(1rem, 1fr) /* Reduced side padding for mobile */
+                [full-end];
+            gap: 1rem; /* Reduced gap for mobile */
+            padding: 2rem 0; /* Reduced padding for mobile */
             position: relative;
         }
 
@@ -40,58 +42,70 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(hsla(215, 100%, 65%, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, hsla(215, 100%, 65%, 0.1) 1px, transparent 1px);
-            background-size: 4rem 4rem;
+            background-size: 2rem 2rem; /* Reduced background size for mobile */
             mask: linear-gradient(to bottom, black 80%, transparent);
+             /* Prevent scrollbar from grid background */
         }
 
-        /* $125K Holographic Sections */
+        /* $125K Holographic Sections - Mobile First */
         .holo-section {
             grid-column: main;
-            padding: 6rem;
+            padding: 2rem; /* Reduced padding for mobile */
             background: linear-gradient(
                 145deg,
                 hsla(215, 100%, 10%, 0.95),
                 hsla(215, 100%, 5%, 0.95)
             );
-            backdrop-filter: blur(2rem);
+            backdrop-filter: blur(1rem); /* Reduced blur for mobile */
             border: 1px solid;
             border-image: var(--cyber-border) 1;
             transform-style: preserve-3d;
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            margin-bottom: 1rem; /* Spacing between sections */
         }
 
         .holo-section:hover {
-            transform: translateZ(3rem);
-            box-shadow: 0 0 4rem hsla(215, 100%, 65%, 0.15);
+            transform: translateZ(1rem); /* Reduced translation for mobile */
+            box-shadow: 0 0 2rem hsla(215, 100%, 65%, 0.15); /* Reduced shadow for mobile */
         }
 
-        /* $60K Quantum Typography */
+        /* $60K Quantum Typography - Mobile First */
         h1, h2, h3 {
             font-family: var(--font-mono);
             background: linear-gradient(45deg, var(--neutron-white), var(--proton-glow));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 4rem hsla(215, 100%, 65%, 0.2);
+            text-shadow: 0 0 2rem hsla(215, 100%, 65%, 0.2); /* Reduced shadow */
         }
 
         h1 {
-            font-size: 6rem;
+            font-size: 3rem; /* Reduced font size for mobile */
             line-height: 1.1;
-            margin-bottom: 4rem;
+            margin-bottom: 1rem; /* Reduced margin for mobile */
             position: relative;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        h3 {
+             font-size: 1.5rem; /* Adjusted size for timeline titles */
+            margin-bottom: 0.5rem;
+
         }
 
         h1::after {
             content: '';
             position: absolute;
-            bottom: -2rem;
+            bottom: -1rem; /* Reduced spacing for mobile */
             left: 0;
-            width: 20rem;
-            height: 0.4rem;
+            width: 10rem; /* Reduced width for mobile */
+            height: 0.2rem; /* Reduced height for mobile */
             background: var(--cyber-border);
         }
 
@@ -104,7 +118,7 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            background-image: 
+            background-image:
                 linear-gradient(transparent 90%, hsla(215, 100%, 65%, 0.05)),
                 repeating-linear-gradient(
                     0deg,
@@ -121,45 +135,50 @@
             to { background-position: 0 100vh; }
         }
 
-        /* $100K Interactive Timeline */
+        /* $100K Interactive Timeline - Mobile First */
         .quantum-timeline {
             position: relative;
-            padding-left: 4rem;
-            margin: 8rem 0;
+            padding-left: 1rem; /* Reduced padding for mobile */
+            margin: 2rem 0; /* Reduced margin for mobile */
         }
 
         .timeline-node {
             position: relative;
-            padding: 4rem;
-            margin-bottom: 4rem;
+            padding: 1rem; /* Reduced padding */
+            margin-bottom: 1rem; /* Reduced margin */
             background: linear-gradient(
                 145deg,
                 hsla(215, 100%, 15%, 0.8),
                 hsla(215, 100%, 5%, 0.8)
             );
-            border-left: 0.4rem solid var(--proton-glow);
+            border-left: 0.2rem solid var(--proton-glow); /* Reduced border */
             transform-origin: left center;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
         }
 
         .timeline-node:hover {
-            transform: scale(1.02) translateX(2rem);
-            box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, 0.3);
+            transform: scale(1.02) translateX(0.5rem); /* Reduced translation */
+            box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3); /* Reduced shadow */
+        }
+        .timeline-node p {
+            font-size: 1rem;  /* Consistent font size */
         }
 
-        /* $80K Achievement Orbs */
+        /* $80K Achievement Orbs - Mobile First */
         .achievement-orb {
-            padding: 4rem;
+            padding: 1rem; /* Reduced padding */
             background: radial-gradient(
                 circle at 70% 30%,
                 hsla(215, 100%, 25%, 0.8),
                 hsla(215, 100%, 10%, 0.8)
             );
-            border-radius: 2rem;
+            border-radius: 1rem; /* Reduced radius */
             border: 1px solid hsla(215, 100%, 65%, 0.3);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            margin-bottom: 1rem; /* Space between orbs */
         }
 
         .achievement-orb::before {
@@ -176,11 +195,80 @@
             );
             animation: rotate 8s linear infinite;
         }
+        .achievement-orb p{
+            position: relative; /* Ensure text is above the pseudo-element */
+             z-index: 2;        /* Place text on top */
+        }
 
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .quantum-grid {
+                gap: 4rem;
+                padding: 8rem 0;
+            }
+            .quantum-grid::before {
+                background-size: 4rem 4rem;
+            }
+            .holo-section {
+                padding: 6rem;
+                margin-bottom: 0; /* Remove bottom margin on larger screens */
+            }
+            .holo-section:hover{
+                transform: translateZ(3rem);
+                box-shadow: 0 0 4rem hsla(215, 100%, 65%, 0.15);
+            }
+            h1 {
+                font-size: 6rem;
+                margin-bottom: 4rem;
+            }
+              h2 {
+                font-size: 3rem; /* Larger size for subheadings on desktop */
+                margin-top: 3rem;
+
+            }
+             h3{
+                 font-size: 2rem;
+             }
+            h1::after {
+                bottom: -2rem;
+                width: 20rem;
+                height: 0.4rem;
+            }
+            .quantum-timeline {
+                padding-left: 4rem;
+                margin: 8rem 0;
+            }
+            .timeline-node {
+                padding: 4rem;
+                margin-bottom: 4rem;
+                border-left: 0.4rem solid var(--proton-glow);
+            }
+            .timeline-node:hover{
+                transform: scale(1.02) translateX(2rem);
+                box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, 0.3);
+            }
+
+            .achievement-orb {
+                padding: 4rem;
+                border-radius: 2rem;
+                 margin-bottom: 0; /* Remove margin on larger screens */
+            }
+            .achievement-grid{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        .content-flow > * + * {
+            margin-top: 1em; /* Vertical spacing between flow elements */
+        }
+
     </style>
 </head>
 <body>
@@ -191,13 +279,35 @@
         <section class="holo-section">
             <h1>Abdallah Nofan</h1>
             <div class="content-flow">
-                <!-- Original text content preserved exactly -->
-                <p>Abdallah’s journey wasn’t solely about technical skills...</p>
-                
+                <p>Abdallah’s journey wasn’t solely about technical skills. He recognized early on the importance of collaboration, learning from others, and sharing his knowledge. This drive for constant growth led him to work on various high-profile cybersecurity projects, ensuring that industries across the globe could stay one step ahead of cybercriminals.</p>
+
                 <div class="quantum-timeline">
                     <div class="timeline-node">
-                        <h3>Achievements in Cybersecurity</h3>
-                        <!-- Full original achievement content -->
+                        <h3>Achievements in the Cybersecurity Landscape</h3>
+                        <p>Abdallah’s contributions to cybersecurity go beyond just protecting systems. He has been at the forefront of developing advanced AI-driven cybersecurity technologies and has been instrumental in researching and promoting quantum-resistant security protocols. These innovations are considered game-changers in an era where digital security is more crucial than ever.</p>
+                        <p>Over the years, Abdallah has trained thousands of cybersecurity professionals, sharing his expertise and helping build the next generation of digital security experts. His work is widely respected by both industry leaders and institutions, and his impact on the field is immeasurable.</p>
+                    </div>
+
+                    <div class="timeline-node">
+                         <h3>Abdallah Nofan’s Role at Meta</h3>
+                         <p>Today, Abdallah Nofan is an official developer at Instagram, where he collaborates with Meta to push the boundaries of technology and cybersecurity. His role at Meta allows him to not only work on cutting-edge innovations but also ensure the highest standards of security are maintained for billions of users globally.</p>
+                        <p>Abdallah’s position at Meta places him at the heart of one of the world’s largest tech companies. Based at King Cross, London, the company’s second-largest office after the Meta office in Ireland, Abdallah plays a crucial role in ensuring Meta’s platforms remain secure and resilient against emerging threats. His contributions help Meta continue to provide a safe and secure experience for its massive user base, while constantly innovating in the space of social media and digital communication.</p>
+                    </div>
+                      <div class="timeline-node">
+                        <h3>An Influential Figure in the Tech Community</h3>
+                        <p>Beyond his technical expertise, Abdallah has also become a highly influential figure in the broader tech community. His contributions extend beyond his work with Meta, as he regularly participates in international cybersecurity conferences, sharing his knowledge and research with others in the field. His insights into the future of cybersecurity and technology have made him a sought-after speaker and consultant.</p>
+                    </div>
+                    <div class="timeline-node">
+                       <h3>Abdallah Nofan’s Vision for the Future</h3>
+                       <p>As a pioneer in cybersecurity, Abdallah remains focused on the future of technology. His vision is one of a digitally secure world where artificial intelligence, blockchain, and quantum computing play central roles in reshaping the way we think about data protection. Abdallah believes that technology, when used responsibly, has the potential to solve many of the challenges that we face today.</p>
+                        <p>He continues to be an advocate for responsible tech development, emphasizing the need for ethics and collaboration in the ever-changing landscape of cybersecurity.</p>
+
+                    </div>
+                    <div class="timeline-node">
+                        <h3>Personal Life and Legacy</h3>
+                        <p>When he’s not shaping the future of cybersecurity, Abdallah is known for his love of exploring new tech innovations, mentoring young developers, and staying active within his community. His career journey serves as an inspiration for many aspiring tech professionals, showing them that with passion, hard work, and dedication, one can achieve remarkable things in a rapidly evolving field.</p>
+
+                        <p>Abdallah Nofan is not just a leading force in cybersecurity but a visionary whose work will continue to have a lasting impact on the tech world for years to come.</p>
                     </div>
                 </div>
             </div>
@@ -206,11 +316,15 @@
         <!-- Meta Collaboration -->
         <section class="holo-section">
             <h2>Meta Architecture</h2>
-            <div class="achievement-grid">
+             <div class="achievement-grid">
                 <div class="achievement-orb">
-                    <!-- Original Meta partnership content -->
+                    <p>Today, Abdallah Nofan is an official developer at Instagram, where he collaborates with Meta to push the boundaries of technology and cybersecurity. His role at Meta allows him to not only work on cutting-edge innovations but also ensure the highest standards of security are maintained for billions of users globally.</p>
                 </div>
-            </div>
+                <div class="achievement-orb">
+                   <p>Abdallah’s position at Meta places him at the heart of one of the world’s largest tech companies. Based at King Cross, London, the company’s second-largest office after the Meta office in Ireland, Abdallah plays a crucial role in ensuring Meta’s platforms remain secure and resilient against emerging threats.</p>
+                </div>
+             </div>
+
         </section>
     </main>
 </body>
